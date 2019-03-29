@@ -1,0 +1,1 @@
+{"type":"Box","props":{"y":0,"x":0,"name":"Gamebox","presetID":1,"isPresetRoot":true},"compId":28,"child":[{"type":"Text","props":{"zOrder":1,"y":0,"x":30,"width":580,"text":"0","name":"score_text","height":50,"fontSize":50,"font":"Helvetica","color":"#ff0400","bold":true,"align":"left","presetID":2,"runtime":"laya.display.Text"},"compId":38}],"loadList":[],"loadList3D":[]}
