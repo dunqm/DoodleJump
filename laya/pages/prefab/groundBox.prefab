@@ -51,7 +51,7 @@
             "source":"src/script/groundBox.js",
             "searchKey":"Script,groundBox",
             "removeAble":true,
-            "props":{"propBox":"@Prefab:prefab/propBox.prefab","presetID":4,"preset":"laya/pages/prefab/groundBox.prefab","SpringBox":"@Prefab:prefab/propBox/SpringBox.prefab","PropellerBox":"@Prefab:prefab/propBox/PropellerBox.prefab"},
+            "props":{"tan-ani":"ani/ground_tan.ani","propBox":"@Prefab:prefab/propBox.prefab","presetID":4,"preset":"laya/pages/prefab/groundBox.prefab","enabled":true,"brown-ani":"ani/ground_brown.ani","ani":"ani/ground_tan.ani","SpringBox":"@Prefab:prefab/propBox/SpringBox.prefab","PropellerBox":"@Prefab:prefab/propBox/PropellerBox.prefab"},
             "nodeParent":50,
             "label":"groundBox",
             "isDirectory":false,

@@ -1,0 +1,1 @@
+{"type":"Scene","props":{"width":640,"runtime":"script/LoadingPage/LoadingPage.js","height":1024},"compId":2,"child":[{"type":"Image","props":{"zOrder":-1,"y":0,"x":0,"skin":"bck_2x.png","name":"bckImg","layoutEnabled":false,"alpha":1},"compId":4}],"loadList":["bck_2x.png"],"loadList3D":[]}

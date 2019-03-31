@@ -1,8 +1,8 @@
 import GameControl from "./GameControl"
 
-/*
-主要对场景GameStart的控制，
-积分的显示，背景图片调节，游戏框体
+/**
+ * 主要对场景GameStart的控制，
+ * 积分的显示，背景图片调节，游戏框体
 */
 export default class GameUI extends Laya.Scene{
     constructor(){

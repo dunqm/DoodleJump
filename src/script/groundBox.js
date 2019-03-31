@@ -1,6 +1,7 @@
 
 export default class groundBox extends Laya.Script {
-
+    /** @prop {name:brown-ani,tips:"动画资源",type:Res}*/
+    /** @prop {name:tan-ani,tips:"动画资源",type:Res}*/
 
 
     constructor(){
@@ -9,7 +10,7 @@ export default class groundBox extends Laya.Script {
         //为了外部控制器能提前获取到，地板类型必须在加载前(onEnable)初始化
         var ground_typeAll = ["green","blue","white","brown","tan"];
         this.ground_type = ground_typeAll[Math.floor(Math.random()*(ground_typeAll.length))];
-        //this.ground_type = "tan";
+        this.ground_type = "tan";
     }
     onEnable() {
         /**获得组件引用，避免每次获取组件带来不必要的查询开销 */
@@ -43,13 +44,14 @@ export default class groundBox extends Laya.Script {
                 this._rig.setVelocity({ x: -5, y: 0 });
             }
         }else if(this.ground_type == "tan" && this.ani_play){
-            if (this.owner.y > -this.owner._parent.y+Laya.stage.height/4) {
+            if (this.owner.y > -this.owner._parent.y + Laya.stage.height/4) {
                 this.ani_play = false;
                 let tan = Laya.Pool.getItemByCreateFun("tan", this.createTan, this);
                 tan.pos(0, 0);
                 this.owner.addChild(tan);
                 tan.play(0, false);
-                this.owner.texture = "";
+                this.owner.texture = null;
+                
             }
         }
 
@@ -74,7 +76,7 @@ export default class groundBox extends Laya.Script {
                     brown.pos(0, 0);
                     this.owner.addChild(brown);
                     brown.play(0, false);
-                    this.owner.texture = "";
+                    this.owner.texture = null;
                     this._rig.setVelocity({ x: 0, y: 10 });
                     break;
 
@@ -93,7 +95,7 @@ export default class groundBox extends Laya.Script {
      /**使用对象池创建brown地板动画 */
     createBrown() {
         let ani = new Laya.Animation();
-        ani.loadAnimation("game/ground_brown.ani");
+        ani.loadAnimation("ani/ground_brown.ani");
         ani.on(Laya.Event.COMPONENT_REMOVED, null, recover);
         function recover() {
             ani.removeSelf();
@@ -106,7 +108,7 @@ export default class groundBox extends Laya.Script {
      createTan() {
         let ani = new Laya.Animation();
         let Me = this;
-        ani.loadAnimation("game/ground_tan.ani");
+        ani.loadAnimation("ani/ground_tan.ani");
         ani.on(Laya.Event.COMPONENT_REMOVED, null, recover);
         function recover() {
             ani.removeSelf();

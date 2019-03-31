@@ -1,6 +1,8 @@
 
     
 export default class PropellerBox extends Laya.Script{
+    /** @prop {name:Propeller-ani,tips:"动画资源",type:Res}*/
+
     constructor(){
         super();
         //道具类型初始化设置,随机设置类型。
@@ -43,7 +45,7 @@ export default class PropellerBox extends Laya.Script{
             propeller.pos(0, 0);
             this.owner.addChild(propeller);
             propeller.play(0, true);
-            this.owner.texture = "";
+            this.owner.texture = null;
 
             this.owner.x = other.owner.x + 29;
             this.owner.y = other.owner.y -18;
@@ -58,7 +60,7 @@ export default class PropellerBox extends Laya.Script{
 
     createPropeller() {
         let ani = new Laya.Animation();
-        ani.loadAnimation("game/prop_propeller.ani");
+        ani.loadAnimation("ani/prop_propeller.ani");
         
         ani.on(Laya.Event.COMPONENT_REMOVED, null, recover);
         function recover() {

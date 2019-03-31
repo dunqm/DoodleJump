@@ -53,7 +53,7 @@ export default class GameControl extends Laya.Script {
     }
 
     createGround(){
-        while(this.Ground_max > -this.owner.y+this._Ground_max){
+        while(this.Ground_max > -this.owner.y + this._Ground_max){
             let Ground_max =  this.Ground_max - Math.random() * this.gorund_apart_height - 31;
             let Ground_width = Math.random() * (Laya.stage.width - 120);
             let ground = Laya.Pool.getItemByCreateFun("groundBox", this.groundBox.create, this.groundBox);
@@ -61,7 +61,7 @@ export default class GameControl extends Laya.Script {
             //brown类型的地板属于额外地板类型
             if(ground._components[2].ground_type != "brown")this.Ground_max = Ground_max;
             this.owner.addChild(ground);
-
+            
             //随机在地板上创建道具
             if( ground._components[2].ground_type == "green"  && Math.random() > 0.1){
                 this.createProp(Ground_width,Ground_max);

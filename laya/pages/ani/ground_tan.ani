@@ -7,6 +7,7 @@
     "nodeParent":-1,
     "maxID":4,
     "label":"View",
+    "isOpen":null,
     "isDirectory":true,
     "isAniNode":true,
     "hasChild":true,
@@ -147,7 +148,7 @@
                             }],
                         "name":[
                             {
-                                "value":"tan-1",
+                                "value":"",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,

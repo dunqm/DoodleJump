@@ -1,6 +1,8 @@
 
     
 export default class JetpackBox extends Laya.Script{
+    /** @prop {name:Jetpack-ani,tips:"动画资源",type:Res}*/
+
     constructor(){
         super();
         //道具类型初始化设置,随机设置类型。
@@ -45,7 +47,7 @@ export default class JetpackBox extends Laya.Script{
             jetpack.pos(0, 0);
             this.owner.addChild(jetpack);
             jetpack.play(0, true);
-            this.owner.texture = "";
+            this.owner.texture = null;
 
             this.owner.x = other.owner.x + 70;
             this.owner.y = other.owner.y + 26;
@@ -60,7 +62,7 @@ export default class JetpackBox extends Laya.Script{
 
     createJetpack() {
         let ani = new Laya.Animation();
-        ani.loadAnimation("game/prop_jetpack.ani");
+        ani.loadAnimation("ani/prop_jetpack.ani");
         
         ani.on(Laya.Event.COMPONENT_REMOVED, null, recover);
         function recover() {
