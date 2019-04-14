@@ -6,20 +6,20 @@ export default class groundBox extends Laya.Script {
 
     constructor(){
         super();
-        //地板类型初始化设置,随机设置类型。
-        //为了外部控制器能提前获取到，地板类型必须在加载前(onEnable)初始化
-        var ground_typeAll = ["green","blue","white","brown","tan"];
-        this.ground_type = ground_typeAll[Math.floor(Math.random()*(ground_typeAll.length))];
-        this.ground_type = "tan";
     }
     onEnable() {
         /**获得组件引用，避免每次获取组件带来不必要的查询开销 */
         this._rig = this.owner.getComponent(Laya.RigidBody);
-        //加载相应类型的地板图片
-        this.owner.texture = "game-tiles/ground-" + this.ground_type + ".png";
         //反弹速度
         this.jump_height = -25;
+        //加载相应类型的地板图片
+        this.owner.texture = "game-tiles/ground-" + this.ground_type + ".png";
         this.GroundType_onEnable();
+    }
+
+    GroundType_into(type = 0){
+        var ground_typeAll = ["green","blue","brown","white","tan"];
+        this.ground_type = ground_typeAll[type];
     }
 
     //针对不同类型的地板进行不同的初始化
@@ -92,7 +92,9 @@ export default class groundBox extends Laya.Script {
         }
     }
 
-     /**使用对象池创建brown地板动画 */
+     /**
+      * 使用对象池创建brown地板动画
+      */
     createBrown() {
         let ani = new Laya.Animation();
         ani.loadAnimation("ani/ground_brown.ani");
@@ -104,7 +106,9 @@ export default class groundBox extends Laya.Script {
         return ani;
     }
 
-     /**使用对象池创建tan地板动画 */
+     /**
+      * 使用对象池创建tan地板动画 
+      */
      createTan() {
         let ani = new Laya.Animation();
         let Me = this;

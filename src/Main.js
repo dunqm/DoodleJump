@@ -31,7 +31,7 @@ class Main {
 
 	onConfigLoaded() {
 		//加载IDE指定的场景
-		Laya.Scene.load("game/loadingPage.scene",Laya.Handler.create(this,this.LoadScene));
+		Laya.Scene.load("game/LoadingPage.scene",Laya.Handler.create(this,this.LoadScene));
 		GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
 	}
 

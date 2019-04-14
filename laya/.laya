@@ -1,6 +1,6 @@
 <project version="2.0">
-   <asynRes>img,temp,sound                                    </asynRes>
-   <unDealRes>embed                                    </unDealRes>
+   <asynRes>img,temp,sound                                       </asynRes>
+   <unDealRes>embed                                       </unDealRes>
    <resTypes>png,jpg   </resTypes>
    <resExportPath>bin/res/atlas   </resExportPath>
    <asynResExportPath>bin   </asynResExportPath>
@@ -16,7 +16,7 @@ var Scene=Laya.Scene;]]>   </codeImportsJS>
    <shareResPath/>
    <codeType>2   </codeType>
    <resCanCompress/>
-   <resPublishQuality>80                                             </resPublishQuality>
+   <resPublishQuality>80                                                </resPublishQuality>
    <langPath/>
    <defaultFont/>
    <codeImportsTS><![CDATA[import View=Laya.View;
@@ -30,12 +30,12 @@ import Scene=Laya.Scene;]]>   </codeImportsTS>
    <trimempty>false   </trimempty>
    <startScene>game/GameStart.scene   </startScene>
    <engineType>2D   </engineType>
-   <scaleMode>fixedwidth   </scaleMode>
+   <scaleMode>noscale   </scaleMode>
    <screenMode>none   </screenMode>
    <alignV>top   </alignV>
-   <alignH>left   </alignH>
+   <alignH>center   </alignH>
    <designWidth>640   </designWidth>
-   <designHeight>1136   </designHeight>
+   <designHeight>1024   </designHeight>
    <codeViewExportPath>src/view   </codeViewExportPath>
    <picType>0   </picType>
    <atlasType>1   </atlasType>

@@ -2,18 +2,20 @@
     "x":0,
     "type":"Sprite",
     "selectedBox":69,
+    "selecteID":70,
     "searchKey":"Sprite,SpringBox",
     "props":{"y":0,"x":0,"width":45,"texture":"game-tiles/prop-Spring-Compression.png","presetID":1,"preset":"laya/pages/prefab/propBox/SpringBox.prefab","name":"SpringBox","isPresetRoot":true,"height":60},
     "nodeParent":-1,
     "maxID":73,
     "label":"SpringBox",
-    "isOpen":null,
+    "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
     "hasChild":true,
     "compId":69,
     "child":[
         {
+            "x":15,
             "type":"RigidBody",
             "switchAble":true,
             "searchKey":"RigidBody",
@@ -30,6 +32,7 @@
                 ]
         },
         {
+            "x":15,
             "type":"BoxCollider",
             "switchAble":true,
             "searchKey":"BoxCollider",
@@ -46,6 +49,7 @@
                 ]
         },
         {
+            "x":15,
             "type":"Script",
             "switchAble":true,
             "source":"src/script/prop/SpringBox.js",

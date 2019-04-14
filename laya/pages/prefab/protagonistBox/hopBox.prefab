@@ -2,7 +2,7 @@
     "x":0,
     "type":"Sprite",
     "selectedBox":45,
-    "selecteID":39,
+    "selecteID":42,
     "searchKey":"Sprite,hopBox",
     "props":{"zOrder":1,"y":0,"x":0,"width":124,"texture":"hop/hop-left-jump.png","presetID":1,"preset":"laya/pages/prefab/protagonistBox/hopBox.prefab","name":"hopBox","isPresetRoot":true,"height":120,"cacheAs":"none"},
     "nodeParent":-1,

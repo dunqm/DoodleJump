@@ -2,18 +2,20 @@
     "x":0,
     "type":"Sprite",
     "selectedBox":50,
+    "selecteID":51,
     "searchKey":"Sprite,groundBox",
     "props":{"y":0,"x":0,"width":120,"texture":"game-tiles/ground-green.png","presetID":1,"preset":"laya/pages/prefab/groundBox.prefab","name":"groundBox","isPresetRoot":true,"height":34},
     "nodeParent":-1,
     "maxID":55,
     "label":"groundBox",
-    "isOpen":null,
+    "isOpen":true,
     "isDirectory":true,
     "isAniNode":true,
     "hasChild":true,
     "compId":50,
     "child":[
         {
+            "x":15,
             "type":"RigidBody",
             "switchAble":true,
             "searchKey":"RigidBody",
@@ -30,6 +32,7 @@
                 ]
         },
         {
+            "x":15,
             "type":"BoxCollider",
             "switchAble":true,
             "searchKey":"BoxCollider",
@@ -46,6 +49,7 @@
                 ]
         },
         {
+            "x":15,
             "type":"Script",
             "switchAble":true,
             "source":"src/script/groundBox.js",

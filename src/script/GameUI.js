@@ -54,6 +54,10 @@ export default class GameUI extends Laya.Scene{
         this.score_text.text = this.score;
     }
 
+    getScore(){
+        return this.score;
+    }
+
     isdebug(){
         this._gameBox._components[0].isdebug();
     }

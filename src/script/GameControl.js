@@ -32,7 +32,7 @@ export default class GameControl extends Laya.Script {
         //需要创建绿地的最高位置(设置为负值意味着还未显示提前加载)
         this._Ground_max = -100;
         //两绿地垂直最高距离(或人物跳跃最高高度)
-        this.gorund_apart_height = 130;
+        this.gorund_apart_height = 110;
 
         //画面移动时的缓动开关
         this._tween = true;
@@ -53,20 +53,53 @@ export default class GameControl extends Laya.Script {
     }
 
     createGround(){
+        let types = this.createGroundType();
         while(this.Ground_max > -this.owner.y + this._Ground_max){
-            let Ground_max =  this.Ground_max - Math.random() * this.gorund_apart_height - 31;
-            let Ground_width = Math.random() * (Laya.stage.width - 120);
+            let Ground_y =  this.Ground_max - Math.random() * this.gorund_apart_height - 34;
+            let Ground_x = Math.random() * (Laya.stage.width - 120);
+
             let ground = Laya.Pool.getItemByCreateFun("groundBox", this.groundBox.create, this.groundBox);
-            ground.pos(Ground_width, Ground_max);
+            ground.pos(Ground_x, Ground_y);
+            let type = types[Math.floor(Math.random() * types.length)];
             //brown类型的地板属于额外地板类型
-            if(ground._components[2].ground_type != "brown")this.Ground_max = Ground_max;
+            if(type == 2)
+            if(this.broken == 1){
+                this.broken = 0;
+                type = 0;
+            }else{
+                this.broken  = 1;
+            }
+            this.Ground_max = Ground_y;
+            //ground.GroundType_into(type);
+            ground._components[2].GroundType_into(type);
             this.owner.addChild(ground);
             
             //随机在地板上创建道具
-            if( ground._components[2].ground_type == "green"  && Math.random() > 0.1){
-                this.createProp(Ground_width,Ground_max);
+            if( type == 0  && Math.random() > 0.5){
+                this.createProp(Ground_x,Ground_y);
             }
         }
+    }
+
+    /**
+     * 根据分数给出地板类型规律的数组
+     * 0: green
+     * 1: blue
+     * 2: brown
+     * 3: white
+     * 4: tan
+     */
+    createGroundType(){
+        var score = GameUI.instance.getScore();
+        var types = [];
+        if (score >= 5000) types = [1, 2, 3, 3, 4, 4, 4];
+        else if (score >= 3500 && score < 5000) types = [1, 1, 2, 3, 3, 3, 4, 4];
+        else if (score >= 2000 && score < 3500) types = [1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3];
+        else if (score >= 1000 && score < 2000) types = [1, 1, 1, 2, 2, 2, 2, 2];
+        else if (score >= 500 && score < 1000) types = [0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2];
+        else if (score >= 100 && score < 500) types = [0, 0, 0, 0, 1, 1];
+        else types = [0];
+        return types;
     }
     //创建道具
     createProp(x,y){
@@ -74,15 +107,15 @@ export default class GameControl extends Laya.Script {
         var prop;
         if(randomNumber > 0.9){
             prop = Laya.Pool.getItemByCreateFun("JetpackBox", this.JetpackBox.create, this.JetpackBox);
-            prop.pos(x + Math.random() * 80 + 10, y - 85);
+            prop.pos(x + Math.random() * 70 + 10, y - 85);
             this.owner.addChild(prop);
         }else if(randomNumber >= 0.8){
             prop = Laya.Pool.getItemByCreateFun("PropellerBox", this.PropellerBox.create, this.PropellerBox);
-            prop.pos(x + Math.random() * 80 + 10, y - 54);
+            prop.pos(x + Math.random() * 70 + 10, y - 54);
             this.owner.addChild(prop);
         }else if(randomNumber >= 0.5){
             prop = Laya.Pool.getItemByCreateFun("SpringBox", this.SpringBox.create, this.SpringBox);
-            prop.pos(x + Math.random() * 80 + 10, y - 50);
+            prop.pos(x + Math.random() * 70 + 10, y - 50);
             this.owner.addChild(prop);
         }
     }
@@ -124,9 +157,10 @@ export default class GameControl extends Laya.Script {
         this.owner.addChild(this.protagonist);
         
         //创建草地
-        let gorund = Laya.Pool.getItemByCreateFun("groundBox", this.groundBox.create, this.groundBox);
-        gorund.pos(Laya.stage.width / 2, Laya.stage.height - 100);
-        this.owner.addChild(gorund);
+        let ground = Laya.Pool.getItemByCreateFun("groundBox", this.groundBox.create, this.groundBox);
+        ground.pos(Laya.stage.width / 2, Laya.stage.height - 100);
+        ground._components[2].GroundType_into(0);
+        this.owner.addChild(ground);
         this.createGround();
     }
     endGame(){
